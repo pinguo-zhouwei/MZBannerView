@@ -54,6 +54,7 @@ public class MZBannerView<T> extends RelativeLayout {
     private int mIndicatorPaddingRight = 0;
     private int mMZModePadding = 0;//在仿魅族模式下，由于前后显示了上下一个页面的部分，因此需要计算这部分padding
     private int mIndicatorAlign = 1;
+    private ViewPager.OnPageChangeListener mOnPageChangeListener;
     public enum IndicatorAlign{
         LEFT,//做对齐
         CENTER,//居中对齐
@@ -198,6 +199,21 @@ public class MZBannerView<T> extends RelativeLayout {
         mDelayedTime = delayedTime;
     }
 
+    public void addPageChangeLisnter(ViewPager.OnPageChangeListener onPageChangeListener){
+        mOnPageChangeListener = onPageChangeListener;
+    }
+
+    /**
+     * 设置indicator 图片资源
+     * @param unSelectRes
+     * @param selectRes
+     */
+    public void setIndicatorRes(int unSelectRes,int selectRes){
+        mIndicatorRes[0]= unSelectRes;
+        mIndicatorRes[1] = selectRes;
+        initIndicator();
+    }
+
     /**
      * 设置数据
      * @param datas
@@ -242,6 +258,9 @@ public class MZBannerView<T> extends RelativeLayout {
                 }
             }
         });
+        if(mOnPageChangeListener!=null){
+            mViewPager.addOnPageChangeListener(mOnPageChangeListener);
+        }
         //初始化Indicator
         initIndicator();
     }
