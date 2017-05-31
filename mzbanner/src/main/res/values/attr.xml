@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MZBannerView">
+        <attr name="open_mz_mode" format="boolean"/>
+        <attr name="canLoop" format="boolean"/>
+        <attr name="indicatorPaddingLeft" format="dimension"/>
+        <attr name="indicatorPaddingRight" format="dimension"/>
+        <attr name="indicatorAlign">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

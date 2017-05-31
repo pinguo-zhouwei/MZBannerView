@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="MZBannerView当普通View使用"
+       android:textSize="18sp"
+       android:gravity="center"
+       />
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="仿魅族效果:"
+       />
+    <com.zhouwei.mzbanner.MZBannerView
+        android:id="@+id/mz_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        app:open_mz_mode="true"
+        app:canLoop="false"
+        app:indicatorAlign="left"
+        app:indicatorPaddingLeft="12dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="普通效果效果:"
+        android:layout_marginTop="20dp"
+        />
+    <com.zhouwei.mzbanner.MZBannerView
+        android:id="@+id/normal_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        app:canLoop="false"
+        app:open_mz_mode="false"
+        app:indicatorAlign="center"
+        />
+</LinearLayout>
