@@ -104,10 +104,6 @@ public class MZBannerView<T> extends RelativeLayout {
         }
       mIndicatorContainer = (LinearLayout) view.findViewById(R.id.banner_indicator_container);
       mViewPager = (ViewPager) view.findViewById(R.id.mzbanner_vp);
-      // 魅族模式
-      if(mIsOpenMZEffect){
-          mViewPager.setPageTransformer(false,new CustomTransformer());
-      }
       mViewPager.setOffscreenPageLimit(4);
 
       mMZModePadding = dpToPx(30);
@@ -123,6 +119,16 @@ public class MZBannerView<T> extends RelativeLayout {
       }
 
 
+    }
+
+    /**
+     * 是否开启魅族模式
+     */
+    private void setOpenMZEffect(){
+        // 魅族模式
+        if(mIsOpenMZEffect){
+            mViewPager.setPageTransformer(false,new CustomTransformer());
+        }
     }
 
     /**
@@ -210,7 +216,7 @@ public class MZBannerView<T> extends RelativeLayout {
 
 
     /******************************************************************************************************/
-    /**                             对外API                                                              **/
+    /**                             对外API                                                               **/
     /******************************************************************************************************/
     /**
      * 开始轮播
@@ -275,7 +281,24 @@ public class MZBannerView<T> extends RelativeLayout {
      * @param mzHolderCreator  ViewHolder生成器 {@link MZHolderCreator} And {@link MZViewHolder}
      */
     public void setPages(List<T> datas,MZHolderCreator mzHolderCreator){
+        if(datas == null || mzHolderCreator == null){
+            return;
+        }
         mDatas = datas;
+
+        //增加一个逻辑：由于魅族模式会在一个页面展示前后页面的部分，因此，数据集合的长度至少为3,否则，自动为普通Banner模式
+        //不管配置的:open_mz_mode 属性的值是否为true
+
+        if(datas.size() < 3){
+            mIsOpenMZEffect = false;
+            MarginLayoutParams layoutParams = (MarginLayoutParams) mViewPager.getLayoutParams();
+            layoutParams.setMargins(0,0,0,0);
+            mViewPager.setLayoutParams(layoutParams);
+            setClipChildren(true);
+            mViewPager.setClipChildren(true);
+        }
+        setOpenMZEffect();
+
         mAdapter = new MZPagerAdapter(datas,mzHolderCreator,mIsCanLoop);
         mAdapter.setUpViewViewPager(mViewPager);
         mAdapter.setPageClickListener(mBannerPageClickListener);
