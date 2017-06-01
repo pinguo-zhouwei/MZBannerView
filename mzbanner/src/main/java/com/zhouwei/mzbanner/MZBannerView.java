@@ -55,6 +55,7 @@ public class MZBannerView<T> extends RelativeLayout {
     private int mMZModePadding = 0;//在仿魅族模式下，由于前后显示了上下一个页面的部分，因此需要计算这部分padding
     private int mIndicatorAlign = 1;
     private ViewPager.OnPageChangeListener mOnPageChangeListener;
+    private BannerPageClickListener mBannerPageClickListener;
     public enum IndicatorAlign{
         LEFT,//做对齐
         CENTER,//居中对齐
@@ -240,6 +241,15 @@ public class MZBannerView<T> extends RelativeLayout {
     public void addPageChangeLisnter(ViewPager.OnPageChangeListener onPageChangeListener){
         mOnPageChangeListener = onPageChangeListener;
     }
+
+    /**
+     *  添加Page点击事件
+     * @param bannerPageClickListener {@link BannerPageClickListener}
+     */
+    public void setBannerPageClickListener(BannerPageClickListener bannerPageClickListener) {
+        mBannerPageClickListener = bannerPageClickListener;
+    }
+
     /**
      * 返回ViewPager
      * @return {@link ViewPager}
@@ -268,6 +278,7 @@ public class MZBannerView<T> extends RelativeLayout {
         mDatas = datas;
         mAdapter = new MZPagerAdapter(datas,mzHolderCreator,mIsCanLoop);
         mAdapter.setUpViewViewPager(mViewPager);
+        mAdapter.setPageClickListener(mBannerPageClickListener);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -361,6 +372,7 @@ public class MZBannerView<T> extends RelativeLayout {
         private MZHolderCreator mMZHolderCreator;
         private ViewPager mViewPager;
         private boolean canLoop;
+        private BannerPageClickListener mPageClickListener;
 
         public MZPagerAdapter(List<T> datas, MZHolderCreator MZHolderCreator,boolean canLoop) {
             if(mDatas == null){
@@ -373,6 +385,10 @@ public class MZBannerView<T> extends RelativeLayout {
            // mDatas.add(datas.get(0));//在最后加入最前面一个
             mMZHolderCreator = MZHolderCreator;
             this.canLoop = canLoop;
+        }
+
+        public void setPageClickListener(BannerPageClickListener pageClickListener) {
+            mPageClickListener = pageClickListener;
         }
 
         /**
@@ -417,7 +433,7 @@ public class MZBannerView<T> extends RelativeLayout {
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(ViewGroup container, final int position) {
             View view = getView(position,null,container);
             container.addView(view);
             return view;
@@ -469,7 +485,7 @@ public class MZBannerView<T> extends RelativeLayout {
          */
         private View getView(int position,View view ,ViewGroup container){
 
-            int realPosition = position % getRealCount();
+            final int realPosition = position % getRealCount();
             MZViewHolder holder =null;
             if(view == null){
                 holder = mMZHolderCreator.createViewHolder();
@@ -481,6 +497,16 @@ public class MZBannerView<T> extends RelativeLayout {
             if(holder!=null && mDatas!=null && mDatas.size()>0){
                 holder.onBind(container.getContext(),realPosition,mDatas.get(realPosition));
             }
+
+            // 添加点击事件
+            view.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mPageClickListener!=null){
+                        mPageClickListener.onPageClick(v,realPosition);
+                    }
+                }
+            });
 
             return view;
         }

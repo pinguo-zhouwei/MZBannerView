@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.zhouwei.mzbanner.MZBannerView;
 import com.zhouwei.mzbanner.holder.MZHolderCreator;
@@ -33,6 +34,12 @@ public class MZModeBannerFragment extends Fragment{
     private void initView(View view) {
 
         mMZBanner = (MZBannerView) view.findViewById(R.id.banner);
+        mMZBanner.setBannerPageClickListener(new MZBannerView.BannerPageClickListener() {
+            @Override
+            public void onPageClick(View view, int position) {
+                Toast.makeText(getContext(),"click page:"+position,Toast.LENGTH_LONG).show();
+            }
+        });
         List<Integer> list = new ArrayList<>();
         for(int i=0;i<RES.length;i++){
             list.add(RES[i]);
