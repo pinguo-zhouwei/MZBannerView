@@ -51,6 +51,7 @@ public class NormalViewPagerFragment extends Fragment {
             }
         });
 
+        mNormalViewPager.setIndicatorRes(R.drawable.dot_unselect_image,R.drawable.dot_select_image);
         mNormalViewPager.setPages(mockData(), new MZHolderCreator<ViewPagerHolder>() {
             @Override
             public ViewPagerHolder createViewHolder() {

@@ -145,13 +145,6 @@ public class MZBannerView<T> extends RelativeLayout {
         }
     }
 
-    /**
-     * 返回ViewPager
-     * @return {@link ViewPager}
-     */
-    public ViewPager getViewPager() {
-        return mViewPager;
-    }
 
     private final Runnable mLoopRunnable = new Runnable() {
         @Override
@@ -173,97 +166,7 @@ public class MZBannerView<T> extends RelativeLayout {
         }
     };
 
-    /**
-     * 开始轮播
-     */
-    public void start(){
-        if(mIsCanLoop){
-            mIsAutoPlay = true;
-            mHandler.postDelayed(mLoopRunnable,mDelayedTime);
-        }
-    }
 
-    /**
-     * 停止轮播
-     */
-    public void pause(){
-        mIsAutoPlay = false;
-        mHandler.removeCallbacks(mLoopRunnable);
-    }
-
-    /**
-     * 设置BannerView 的切换时间间隔
-     * @param delayedTime
-     */
-    public void setDelayedTime(int delayedTime) {
-        mDelayedTime = delayedTime;
-    }
-
-    public void addPageChangeLisnter(ViewPager.OnPageChangeListener onPageChangeListener){
-        mOnPageChangeListener = onPageChangeListener;
-    }
-
-    /**
-     * 设置indicator 图片资源
-     * @param unSelectRes
-     * @param selectRes
-     */
-    public void setIndicatorRes(int unSelectRes,int selectRes){
-        mIndicatorRes[0]= unSelectRes;
-        mIndicatorRes[1] = selectRes;
-        initIndicator();
-    }
-
-    /**
-     * 设置数据
-     * @param datas
-     * @param mzHolderCreator
-     */
-    public void setPages(List<T> datas,MZHolderCreator mzHolderCreator){
-        mDatas = datas;
-        mAdapter = new MZPagerAdapter(datas,mzHolderCreator,mIsCanLoop);
-        mAdapter.setUpViewViewPager(mViewPager);
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-              mCurrentItem = position;
-
-
-              // 切换indicator
-              int realSelectPosition = mCurrentItem % mIndicators.size();
-              for(int i = 0;i<mDatas.size();i++){
-                  if(i == realSelectPosition){
-                      mIndicators.get(i).setImageResource(mIndicatorRes[1]);
-                  }else{
-                      mIndicators.get(i).setImageResource(mIndicatorRes[0]);
-                  }
-              }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                switch (state){
-                    case ViewPager.SCROLL_STATE_DRAGGING:
-                        mIsAutoPlay = false;
-                        break;
-                    case ViewPager.SCROLL_STATE_SETTLING:
-                        mIsAutoPlay = true;
-                        break;
-
-                }
-            }
-        });
-        if(mOnPageChangeListener!=null){
-            mViewPager.addOnPageChangeListener(mOnPageChangeListener);
-        }
-        //初始化Indicator
-        initIndicator();
-    }
 
     /**
      * 初始化指示器Indicator
@@ -304,9 +207,112 @@ public class MZBannerView<T> extends RelativeLayout {
         }
     }
 
+
+    /******************************************************************************************************/
+    /**                             对外API                                                              **/
+    /******************************************************************************************************/
+    /**
+     * 开始轮播
+     */
+    public void start(){
+        if(mIsCanLoop){
+            mIsAutoPlay = true;
+            mHandler.postDelayed(mLoopRunnable,mDelayedTime);
+        }
+    }
+
+    /**
+     * 停止轮播
+     */
+    public void pause(){
+        mIsAutoPlay = false;
+        mHandler.removeCallbacks(mLoopRunnable);
+    }
+
+    /**
+     * 设置BannerView 的切换时间间隔
+     * @param delayedTime
+     */
+    public void setDelayedTime(int delayedTime) {
+        mDelayedTime = delayedTime;
+    }
+
+    public void addPageChangeLisnter(ViewPager.OnPageChangeListener onPageChangeListener){
+        mOnPageChangeListener = onPageChangeListener;
+    }
+    /**
+     * 返回ViewPager
+     * @return {@link ViewPager}
+     */
+    public ViewPager getViewPager() {
+        return mViewPager;
+    }
+
+    /**
+     * 设置indicator 图片资源
+     * @param unSelectRes  未选中状态资源图片
+     * @param selectRes  选中状态资源图片
+     */
+    public void setIndicatorRes(int unSelectRes,int selectRes){
+        mIndicatorRes[0]= unSelectRes;
+        mIndicatorRes[1] = selectRes;
+    }
+
+    /**
+     * 设置数据，这是最重要的一个方法。
+     * <p>其他的配置应该在这个方法之前调用</p>
+     * @param datas Banner 展示的数据集合
+     * @param mzHolderCreator  ViewHolder生成器 {@link MZHolderCreator} And {@link MZViewHolder}
+     */
+    public void setPages(List<T> datas,MZHolderCreator mzHolderCreator){
+        mDatas = datas;
+        mAdapter = new MZPagerAdapter(datas,mzHolderCreator,mIsCanLoop);
+        mAdapter.setUpViewViewPager(mViewPager);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mCurrentItem = position;
+
+
+                // 切换indicator
+                int realSelectPosition = mCurrentItem % mIndicators.size();
+                for(int i = 0;i<mDatas.size();i++){
+                    if(i == realSelectPosition){
+                        mIndicators.get(i).setImageResource(mIndicatorRes[1]);
+                    }else{
+                        mIndicators.get(i).setImageResource(mIndicatorRes[0]);
+                    }
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                switch (state){
+                    case ViewPager.SCROLL_STATE_DRAGGING:
+                        mIsAutoPlay = false;
+                        break;
+                    case ViewPager.SCROLL_STATE_SETTLING:
+                        mIsAutoPlay = true;
+                        break;
+
+                }
+            }
+        });
+        if(mOnPageChangeListener!=null){
+            mViewPager.addOnPageChangeListener(mOnPageChangeListener);
+        }
+        //初始化Indicator
+        initIndicator();
+    }
+
     /**
      * 设置Indicator 的对齐方式
-     * @param indicatorAlign
+     * @param indicatorAlign {@link IndicatorAlign#CENTER }{@link IndicatorAlign#LEFT }{@link IndicatorAlign#RIGHT }
      */
     public void setIndicatorAlign(IndicatorAlign indicatorAlign) {
         mIndicatorAlign = indicatorAlign.ordinal();
@@ -324,19 +330,31 @@ public class MZBannerView<T> extends RelativeLayout {
 
     /**
      * 设置ViewPager切换的速度
-     * @param duration
+     * @param duration 切换动画时间
      */
     public void setDuration(int duration){
         mViewPagerScroller.setDuration(duration);
     }
 
+    /**
+     * 设置是否使用ViewPager默认是的切换速度
+     * @param useDefaultDuration 切换动画时间
+     */
     public void setUseDefaultDuration(boolean useDefaultDuration){
         mViewPagerScroller.setUseDefaultDuration(useDefaultDuration);
     }
 
+    /**
+     * 获取Banner页面切换动画时间
+     * @return
+     */
     public int getDuration(){
         return mViewPagerScroller.getScrollDuration();
     }
+
+
+
+
 
     public static class  MZPagerAdapter<T> extends PagerAdapter{
         private List<T> mDatas;
@@ -357,6 +375,10 @@ public class MZBannerView<T> extends RelativeLayout {
             this.canLoop = canLoop;
         }
 
+        /**
+         * 初始化Adapter和设置当前选中的Item
+         * @param viewPager
+         */
         public void setUpViewViewPager(ViewPager viewPager){
             mViewPager = viewPager;
             mViewPager.setAdapter(this);
