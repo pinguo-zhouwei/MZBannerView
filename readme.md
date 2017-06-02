@@ -60,18 +60,7 @@
 2 . activity中代码：
 ```java
         mMZBanner = (MZBannerView) view.findViewById(R.id.banner);
-       // 设置页面点击事件
-        mMZBanner.setBannerPageClickListener(new MZBannerView.BannerPageClickListener() {
-            @Override
-            public void onPageClick(View view, int position) {
-                Toast.makeText(getContext(),"click page:"+position,Toast.LENGTH_LONG).show();
-            }
-        });
-   
-        List<Integer> list = new ArrayList<>();
-        for(int i=0;i<RES.length;i++){
-            list.add(RES[i]);
-        }
+     
        // 设置数据
         mMZBanner.setPages(list, new MZHolderCreator<BannerViewHolder>() {
             @Override
@@ -112,10 +101,11 @@
     }
 ```
 **效果图：**
+
 1, BannerView 轮播效果图：
 
-![仿魅族Banner效果.gif](http://upload-images.jianshu.io/upload_images/3513995-c631c10b1b5613a3.gif?imageMogr2/auto-orient/strip)
+![仿魅族Banner效果.gif](image/仿魅族Banner效果.gif)
 
-2 普通ViewPager效果图:
+2 ，普通ViewPager效果图:
 
-![MZBanner普通ViewPager效果.gif](http://upload-images.jianshu.io/upload_images/3513995-86986080dd53f4ad.gif?imageMogr2/auto-orient/strip)
+![MZBanner普通ViewPager效果.gif](image/MZBanner普通ViewPager效果.gif)
