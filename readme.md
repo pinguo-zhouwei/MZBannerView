@@ -1,6 +1,6 @@
 ### MZBannerView
 
-现在的APP 大多数千篇一律，前天看到魅族手机上所有魅族自家APP上的Banner效果不错，于是就想着来仿着做一个类似的效果。因此就有了这个库。但是为了使用方便，这个库不仅仅只有仿魅族效果的BannerView 来使用，还可以当作普通的BannerView 来使用，还可以当作一个ViewPager 来使用。使用很方便，具体使用方法和API 请看后面的示例。
+现在的APP Banner大多数千篇一律，前几天看到魅族手机上所有魅族自家APP上的Banner效果不错，于是就想着来仿着做一个类似的效果。因此就有了这个库。但是为了使用方便，这个库不仅仅只有仿魅族效果的BannerView 来使用，还可以当作普通的BannerView 来使用，还可以当作一个ViewPager 来使用。使用很方便，具体使用方法和API 请看后面的示例。
 
 
 ![meizuappbanner](image/meizuappbanner.gif) －－－ ![魅族bannerView](image/MZBannerView.gif)
@@ -132,6 +132,38 @@ dependencies {
         mMZBanner.start();//开始轮播
     }
 ```
+### 其他对外API
+```java
+    /******************************************************************************************************/
+    /**                             对外API                                                               **/
+    /******************************************************************************************************/
+    //开始轮播
+     start()
+    //停止轮播
+     pause()
+
+    //设置BannerView 的切换时间间隔
+     setDelayedTime(int delayedTime)
+    // 设置页面改变监听器
+    addPageChangeLisnter(ViewPager.OnPageChangeListener onPageChangeListener)
+
+    //添加Page点击事件
+     setBannerPageClickListener(BannerPageClickListener bannerPageClickListener)
+    //设置是否显示Indicator
+    setIndicatorVisible(boolean visible)
+    // 获取ViewPager
+    ViewPager getViewPager()
+    // 设置 Indicator资源
+    setIndicatorRes(int unSelectRes,int selectRes)
+    //设置页面数据
+    setPages(List<T> datas,MZHolderCreator mzHolderCreator)
+    //设置指示器显示位置
+    setIndicatorAlign(IndicatorAlign indicatorAlign)
+    //设置ViewPager（Banner）切换速度
+    setDuration(int duration)
+```
+因为是对ViewPager的包装，所有要设置某些ViewPager的属性，可以通过getViewPager 获取到ViewPager再设置对应属性
+
 ### 效果图：
 
 1, BannerView 轮播效果图：
