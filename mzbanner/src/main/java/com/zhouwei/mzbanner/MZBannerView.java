@@ -457,7 +457,7 @@ public class MZBannerView<T> extends RelativeLayout {
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
-            View view = getView(position,null,container);
+            View view = getView(position,container);
             container.addView(view);
             return view;
         }
@@ -472,11 +472,8 @@ public class MZBannerView<T> extends RelativeLayout {
             // 轮播模式才执行
             if(canLoop){
                 int position = mViewPager.getCurrentItem();
-                if (position == 0) {
-                    position = getCount() - 2;
-                    setCurrentItem(position);
-                } else if (position == getCount() - 1) {
-                    position = 1;
+                 if (position == getCount() - 1) {
+                    position = 0;
                     setCurrentItem(position);
                 }
             }
@@ -502,22 +499,23 @@ public class MZBannerView<T> extends RelativeLayout {
         /**
          *
          * @param position
-         * @param view
          * @param container
          * @return
          */
-        private View getView(int position,View view ,ViewGroup container){
+        private View getView(int position,ViewGroup container){
 
             final int realPosition = position % getRealCount();
             MZViewHolder holder =null;
-            if(view == null){
-                holder = mMZHolderCreator.createViewHolder();
-                view = holder.createView(container.getContext());
-                view.setTag(R.id.mz_banner_item_tag,holder);
-            }else{
-                holder = (MZViewHolder) view.getTag(R.id.mz_banner_item_tag);
+            // create holder
+            holder = mMZHolderCreator.createViewHolder();
+
+            if(holder == null){
+                throw new RuntimeException("can not return a null holder");
             }
-            if(holder!=null && mDatas!=null && mDatas.size()>0){
+            // create View
+            View view = holder.createView(container.getContext());
+
+            if( mDatas!=null && mDatas.size()>0){
                 holder.onBind(container.getContext(),realPosition,mDatas.get(realPosition));
             }
 
