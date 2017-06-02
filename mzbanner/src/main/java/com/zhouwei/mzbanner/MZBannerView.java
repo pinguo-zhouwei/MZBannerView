@@ -257,6 +257,18 @@ public class MZBannerView<T> extends RelativeLayout {
     }
 
     /**
+     * 是否显示Indicator
+     * @param visible true 显示Indicator，否则不显示
+     */
+    public void setIndicatorVisible(boolean visible){
+        if(visible){
+            mIndicatorContainer.setVisibility(VISIBLE);
+        }else{
+            mIndicatorContainer.setVisibility(GONE);
+        }
+    }
+
+    /**
      * 返回ViewPager
      * @return {@link ViewPager}
      */
