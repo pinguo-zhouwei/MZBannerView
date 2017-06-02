@@ -3,9 +3,13 @@
 ![魅族bannerView](image/魅族bannerView.gif)   ![魅族bannerView](image/MZBannerView.gif)
 
 **MZBannerView 有以下功能：**
+
 1 . 仿魅族BannerView 效果。
+
 2 . 当普通Banner 使用
+
 3 . 当普通ViewPager 使用。
+
 4 . 当普通ViewPager使用(有魅族Banner效果)
 
 **自定义属性**
