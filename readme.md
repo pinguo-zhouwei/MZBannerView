@@ -18,6 +18,12 @@
 
 4 . 当普通ViewPager使用(有魅族Banner效果)
 
+### Demo APK 
+
+gif图片有点模糊，可以扫描下方二维码下载APK体验
+
+![demo二维码.png](image/demo二维码.png)
+
 
 ### Dependency
 Add it in your root build.gradle at the end of repositories:
