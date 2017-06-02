@@ -1,6 +1,6 @@
 ### MZBannerView
 
-![魅族bannerView](image/魅族bannerView.gif)   ![魅族bannerView](image/MZBannerView.gif)
+![魅族bannerView](image/MZBannerView.gif)
 
 **MZBannerView 有以下功能：**
 
@@ -123,8 +123,7 @@ dependencies {
 ### 效果图：
 
 1, BannerView 轮播效果图：
-
-![仿魅族Banner效果.gif](image/仿魅族Banner效果.gif)
+![魅族bannerView](image/魅族bannerView.gif) 
 
 2 ，普通ViewPager效果图:
 
