@@ -1,6 +1,12 @@
 ### MZBannerView
 
-![魅族bannerView](image/MZBannerView.gif)
+现在的APP 大多数千篇一律，前天看到魅族手机上所有魅族自家APP上的Banner效果不错，于是就想着来仿着做一个类似的效果。因此就有了这个库。但是为了使用方便，这个库不仅仅只有仿魅族效果的BannerView 来使用，还可以当作普通的BannerView 来使用，还可以当作一个ViewPager 来使用。使用很方便，具体使用方法和API 请看后面的示例。
+
+
+![meizuappbanner](image/meizuappbanner.gif) －－－ ![魅族bannerView](image/MZBannerView.gif)
+左图为魅族APP上的Banner效果，右图是高仿效果。
+
+
 
 **MZBannerView 有以下功能：**
 
@@ -129,6 +135,10 @@ dependencies {
 2 ，普通ViewPager效果图:
 
 ![MZBanner普通ViewPager效果.gif](image/MZBanner普通ViewPager效果.gif)
+
+### Thanks
+ 感谢[Android-ConvenientBanner](https://github.com/saiwu-bigkoo/Android-ConvenientBanner),Android-ConvenientBanner 是一个不错的Banner库，我也参考了其中的部分代码
+ 有兴趣的可以去看一下这个库。
 
 ### License
   
