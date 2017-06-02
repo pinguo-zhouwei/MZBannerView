@@ -12,7 +12,26 @@
 
 4 . 当普通ViewPager使用(有魅族Banner效果)
 
-**自定义属性**
+
+### Dependency
+Add it in your root build.gradle at the end of repositories:
+
+```java
+allprojects {
+     repositories {
+          ...
+          maven { url 'https://jitpack.io' }
+     }
+}
+```
+Step 2. Add the dependency
+```
+dependencies {
+         compile 'com.github.pinguo-zhouwei:MZBannerView:v1.0.0'
+}
+```
+
+### 自定义属性
 
 | 属性名      | 属性意义   |  取值  |
 | --------   | -----:   | :----: |
@@ -43,7 +62,7 @@
  app:open_mz_mode="false"
  app:canLoop="false"
 ``` 
-**使用方法：**
+### 使用方法
 
 1 . xml 布局文件
 ```java
@@ -101,7 +120,7 @@
         mMZBanner.start();//开始轮播
     }
 ```
-**效果图：**
+### 效果图：
 
 1, BannerView 轮播效果图：
 
