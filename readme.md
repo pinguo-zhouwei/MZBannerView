@@ -44,6 +44,7 @@
  app:canLoop="false"
 ``` 
 **使用方法：**
+
 1 . xml 布局文件
 ```java
  <com.zhouwei.mzbanner.MZBannerView
