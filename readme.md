@@ -54,6 +54,7 @@ dependencies {
 | indicatorAlign        | 设置指示器的位置      |   有三个取值：left 左边，center 剧中显示，right 右侧显示   |
 
 **通过`open_mz_mode `和`canLoop `这两个属性来控制MZBannerView 是用作Banner还是普通ViewPager,有4种组合方式**
+
 1，仿魅族BannerView(默认的模式)
  ```java
  app:open_mz_mode="true"
@@ -105,7 +106,7 @@ dependencies {
         private ImageView mImageView;
         @Override
         public View createView(Context context) {
-            // 返回页面布局文件
+            // 返回页面布局
             View view = LayoutInflater.from(context).inflate(R.layout.banner_item,null);
             mImageView = (ImageView) view.findViewById(R.id.banner_image);
             return view;
