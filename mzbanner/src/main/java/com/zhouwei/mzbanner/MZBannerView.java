@@ -220,8 +220,13 @@ public class MZBannerView<T> extends RelativeLayout {
     /******************************************************************************************************/
     /**
      * 开始轮播
+     * <p>应该确保在调用用了{@link MZBannerView {@link #setPages(List, MZHolderCreator)}} 之后调用这个方法开始轮播</p>
      */
     public void start(){
+        // 如果Adapter为null, 说明还没有设置数据，这个时候不应该轮播Banner
+        if(mAdapter== null){
+            return;
+        }
         if(mIsCanLoop){
             mIsAutoPlay = true;
             mHandler.postDelayed(mLoopRunnable,mDelayedTime);
