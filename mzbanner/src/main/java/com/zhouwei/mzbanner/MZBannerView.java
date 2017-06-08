@@ -452,7 +452,7 @@ public class MZBannerView<T> extends RelativeLayout {
                 return currentItem;
             }
             // 直到找到从0开始的位置
-            while (currentItem % getRealCount() == 0){
+            while (currentItem % getRealCount() != 0){
                 currentItem++;
             }
             return currentItem;
