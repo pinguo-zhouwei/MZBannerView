@@ -24,6 +24,14 @@ gif图片有点模糊，可以扫描下方二维码下载APK体验
 
 ![demo二维码.png](image/demo二维码.png)
 
+### 相关博客
+
+[ViewPager系列之 仿魅族应用的广告BannerView](http://www.jianshu.com/p/653680cfe877)
+
+### 更新日志
+
+** v1.1.0 :** fix 在从网上获取数据后，banner 显显示 造成 ANR 的bug(如果在onCreate()中设置资源显示则没问题)
+
 
 ### Dependency
 Add it in your root build.gradle at the end of repositories:
@@ -39,7 +47,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-         compile 'com.github.pinguo-zhouwei:MZBannerView:v1.0.2'
+         compile 'com.github.pinguo-zhouwei:MZBannerView:v1.1.0'
 }
 ```
 
