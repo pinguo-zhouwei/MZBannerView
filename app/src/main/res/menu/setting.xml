@@ -6,4 +6,7 @@
     <item android:id="@+id/viewPager_mode"
           android:title="viewPager模式"
         />
+    <item android:id="@+id/remote_mode"
+          android:title="从网上获取数据模式"
+        />
 </menu>

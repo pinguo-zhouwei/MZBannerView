@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.zhouwei.mzbannerview.remote.RemoteTestFragment;
+
 public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     @Override
@@ -21,8 +23,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 if(item.getItemId() ==R.id.banner_mode){
                     switchBannerMode();
-                }else{
+                }else if(item.getItemId() == R.id.viewPager_mode){
                     switchViewPagerMode();
+                }else if(item.getItemId() == R.id.remote_mode){
+                    switchRemoteMode();
                 }
                 return true;
             }
@@ -45,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
      */
     public void switchViewPagerMode(){
         Fragment fragment = NormalViewPagerFragment.newInstance();
+        getSupportFragmentManager().beginTransaction().replace(R.id.home_container,fragment).commit();
+    }
+
+    public void switchRemoteMode(){
+        Fragment fragment = RemoteTestFragment.newInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.home_container,fragment).commit();
     }
 }
