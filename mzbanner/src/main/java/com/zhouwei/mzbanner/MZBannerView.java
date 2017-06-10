@@ -413,6 +413,7 @@ public class MZBannerView<T> extends RelativeLayout {
         private ViewPager mViewPager;
         private boolean canLoop;
         private BannerPageClickListener mPageClickListener;
+        private final int mLooperCountFactor = 500;
 
         public MZPagerAdapter(List<T> datas, MZHolderCreator MZHolderCreator,boolean canLoop) {
             if(mDatas == null){
@@ -447,7 +448,7 @@ public class MZBannerView<T> extends RelativeLayout {
         private int getStartSelectItem(){
             // 我们设置当前选中的位置为Integer.MAX_VALUE / 2,这样开始就能往左滑动
             // 但是要保证这个值与getRealPosition 的 余数为0，因为要从第一页开始显示
-            int currentItem = Integer.MAX_VALUE / 2;
+            int currentItem = getRealCount() * mLooperCountFactor / 2;
             if(currentItem % getRealCount()  ==0 ){
                 return currentItem;
             }
@@ -464,7 +465,9 @@ public class MZBannerView<T> extends RelativeLayout {
 
         @Override
         public int getCount() {
-            return canLoop ?Integer.MAX_VALUE : getRealCount();//ViewPager返回int 最大值
+            // 2017.6.10 bug fix
+            // 如果getCount 的返回值为Integer.MAX_VALUE 的话，那么在setCurrentItem的时候会ANR(除了在onCreate 调用之外)
+            return canLoop ? getRealCount() * mLooperCountFactor : getRealCount();//ViewPager返回int 最大值
         }
 
         @Override
