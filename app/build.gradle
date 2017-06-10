@@ -28,7 +28,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile project(':mzbanner')
-   // compile 'com.github.pinguo-zhouwei:MZBannerView:v1.0.2'
+   /// compile 'com.github.pinguo-zhouwei:MZBannerView:v1.1.0'
 
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.google.code.gson:gson:2.6.2'
