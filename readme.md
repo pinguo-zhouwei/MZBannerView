@@ -186,6 +186,18 @@ dependencies {
 ### Thanks
  感谢[Android-ConvenientBanner](https://github.com/saiwu-bigkoo/Android-ConvenientBanner),Android-ConvenientBanner 是一个不错的Banner库，我也参考了其中的部分代码
  有兴趣的可以去看一下这个库。
+ 
+### 联系方式
+ 简书:[http://www.jianshu.com/u/35167a70aa39](http://www.jianshu.com/u/35167a70aa39)
+ 
+ 掘金：[https://juejin.im/user/56949a9960b2e058a42be0ba](https://juejin.im/user/56949a9960b2e058a42be0ba)
+ 
+ 公众号：**Android技术杂货铺**
+ 
+ 欢迎关注我的公众号，第一时间获取我的博客更新提醒，以及更多有价值的原创Android干货文章、职场经验、面试技巧等等。
+ 长按下方二维码即可关注。
+ ![gzh.jpg](image/gzh.jpg)
+ 
 
 ### License
   
