@@ -53,7 +53,7 @@ public class MZModeBannerFragment extends Fragment{
         });
 
         mNormalBanner = (MZBannerView) view.findViewById(R.id.banner_normal);
-
+        mNormalBanner.setIndicatorRes(R.color.colorAccent,R.color.colorPrimary);
         mNormalBanner.setPages(list, new MZHolderCreator<BannerViewHolder>() {
             @Override
             public BannerViewHolder createViewHolder() {

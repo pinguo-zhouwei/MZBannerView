@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.AttrRes;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -13,8 +14,10 @@ import android.support.annotation.StyleRes;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
@@ -36,6 +39,7 @@ import java.util.List;
  */
 
 public class MZBannerView<T> extends RelativeLayout {
+    private static final String TAG = "MZBannerView";
     private ViewPager mViewPager;
     private MZPagerAdapter mAdapter;
     private List<T> mDatas;
@@ -214,6 +218,37 @@ public class MZBannerView<T> extends RelativeLayout {
         }
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if(!mIsCanLoop){
+            return super.dispatchTouchEvent(ev);
+        }
+        switch (ev.getAction()){
+            // 按住Banner的时候，停止自动轮播
+            case MotionEvent.ACTION_MOVE:
+            case MotionEvent.ACTION_CANCEL:
+            case MotionEvent.ACTION_OUTSIDE:
+            case MotionEvent.ACTION_DOWN:
+                int paddingLeft = mViewPager.getLeft();
+                float touchX = ev.getRawX();
+                // 如果是魅族模式，去除两边的区域
+                if(touchX >= paddingLeft && touchX < getScreenWidth(getContext()) - paddingLeft){
+                    mIsAutoPlay = false;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                mIsAutoPlay = true;
+                break;
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    public static int getScreenWidth(Context context){
+        Resources resources = context.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        int width = dm.widthPixels;
+        return width;
+    }
 
     /******************************************************************************************************/
     /**                             对外API                                                               **/
@@ -286,7 +321,7 @@ public class MZBannerView<T> extends RelativeLayout {
      * @param unSelectRes  未选中状态资源图片
      * @param selectRes  选中状态资源图片
      */
-    public void setIndicatorRes(int unSelectRes,int selectRes){
+    public void setIndicatorRes(@DrawableRes int unSelectRes, @DrawableRes int selectRes){
         mIndicatorRes[0]= unSelectRes;
         mIndicatorRes[1] = selectRes;
     }
@@ -540,7 +575,7 @@ public class MZBannerView<T> extends RelativeLayout {
             }
 
             // 添加点击事件
-            view.setOnClickListener(new OnClickListener() {
+           view.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(mPageClickListener!=null){
