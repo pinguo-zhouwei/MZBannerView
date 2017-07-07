@@ -30,6 +30,8 @@ gif图片有点模糊，可以扫描下方二维码下载APK体验
 
 ### 更新日志
 
+**v1.1.1 :** 增加按住Banner 停止轮播，松开开始自动轮播的功能
+
 **v1.1.0 :** fix 在从网上获取数据后，banner 显示 造成 ANR 的bug(如果在onCreate()中设置资源显示则没问题)
 
 
@@ -47,7 +49,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-         compile 'com.github.pinguo-zhouwei:MZBannerView:v1.1.0'
+         compile 'com.github.pinguo-zhouwei:MZBannerView:v1.1.1'
 }
 ```
 
