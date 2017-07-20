@@ -34,6 +34,8 @@ gif图片有点模糊，可以扫描下方二维码下载APK体验
 
 **v1.1.0 :** fix 在从网上获取数据后，banner 显示 造成 ANR 的bug(如果在onCreate()中设置资源显示则没问题)
 
+**v1.1.2 :** fix 更改数据之后，调用setPages重新刷新数据会crush的bug
+ 
 
 ### Dependency
 Add it in your root build.gradle at the end of repositories:
@@ -49,7 +51,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-         compile 'com.github.pinguo-zhouwei:MZBannerView:v1.1.1'
+         compile 'com.github.pinguo-zhouwei:MZBannerView:v1.1.2'
 }
 ```
 
