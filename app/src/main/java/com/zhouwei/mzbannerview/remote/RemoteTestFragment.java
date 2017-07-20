@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.zhouwei.mzbanner.MZBannerView;
@@ -18,6 +19,7 @@ import com.zhouwei.mzbanner.holder.MZViewHolder;
 import com.zhouwei.mzbannerview.R;
 import com.zhouwei.mzbannerview.http.Fault;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.functions.Action1;
@@ -26,9 +28,11 @@ import rx.functions.Action1;
  * Created by zhouwei on 17/6/8.
  */
 
-public class RemoteTestFragment extends Fragment {
+public class RemoteTestFragment extends Fragment implements View.OnClickListener{
    private MovieLoader mMovieLoader;
    private MZBannerView mMZBannerView;
+   private TextView mBtnChange;
+    private List<Movie> mMovies;
    private Handler mHandler = new Handler();
     public static RemoteTestFragment newInstance(){
         RemoteTestFragment fragment = new RemoteTestFragment();
@@ -40,6 +44,8 @@ public class RemoteTestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.remote_test_layout,null);
         mMZBannerView = (MZBannerView) view.findViewById(R.id.my_banner);
+        mBtnChange = (TextView) view.findViewById(R.id.btn_change);
+        mBtnChange.setOnClickListener(this);
         mMovieLoader = new MovieLoader();
         getMovieList();
         return view;
@@ -53,6 +59,7 @@ public class RemoteTestFragment extends Fragment {
         mMovieLoader.getMovie(0,10).subscribe(new Action1<List<Movie>>() {
             @Override
             public void call(List<Movie> movies) {
+                mMovies = movies;
                 Log.e("zhouwei","get data suceess");
                 setBanner(movies);
             }
@@ -92,6 +99,16 @@ public class RemoteTestFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         mMZBannerView.pause();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.btn_change){
+            List movies = new ArrayList(mMovies);
+            movies.add(mMovies.get(0));
+            movies.add(mMovies.get(1));
+            setBanner(movies);
+        }
     }
 
     public static class BannerViewHolder implements MZViewHolder<Movie>{
