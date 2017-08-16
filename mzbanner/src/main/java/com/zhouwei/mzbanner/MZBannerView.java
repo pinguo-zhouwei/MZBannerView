@@ -366,6 +366,10 @@ public class MZBannerView<T> extends RelativeLayout {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+                int realPosition = position % mIndicators.size();
+                if(mOnPageChangeListener!=null){
+                    mOnPageChangeListener.onPageScrolled(realPosition,positionOffset,positionOffsetPixels);
+                }
             }
 
             @Override
@@ -382,6 +386,10 @@ public class MZBannerView<T> extends RelativeLayout {
                         mIndicators.get(i).setImageResource(mIndicatorRes[0]);
                     }
                 }
+                  // 不能直接将mOnPageChangeListener 设置给ViewPager ,否则拿到的position 是原始的positon
+                 if(mOnPageChangeListener!=null){
+                     mOnPageChangeListener.onPageSelected(realSelectPosition);
+                  }
             }
 
             @Override
@@ -395,11 +403,12 @@ public class MZBannerView<T> extends RelativeLayout {
                         break;
 
                 }
+                if(mOnPageChangeListener!=null){
+                    mOnPageChangeListener.onPageScrollStateChanged(state);
+                }
             }
         });
-        if(mOnPageChangeListener!=null){
-            mViewPager.addOnPageChangeListener(mOnPageChangeListener);
-        }
+
 
     }
 

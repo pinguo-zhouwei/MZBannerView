@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,7 @@ import java.util.List;
  */
 
 public class MZModeBannerFragment extends Fragment{
+    public static final String TAG = "MZModeBannerFragment";
     public static final int []RES = new int[]{R.mipmap.image5,R.mipmap.image2,R.mipmap.image3,R.mipmap.image4,R.mipmap.image6,R.mipmap.image7,R.mipmap.image8};
     private MZBannerView mMZBanner;
     private MZBannerView mNormalBanner;
@@ -38,6 +41,22 @@ public class MZModeBannerFragment extends Fragment{
             @Override
             public void onPageClick(View view, int position) {
                 Toast.makeText(getContext(),"click page:"+position,Toast.LENGTH_LONG).show();
+            }
+        });
+        mMZBanner.addPageChangeLisnter(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                Log.e(TAG,"----->addPageChangeLisnter:"+position + "positionOffset:"+positionOffset+ "positionOffsetPixels:"+positionOffsetPixels);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.e(TAG,"addPageChangeLisnter:"+position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
         List<Integer> list = new ArrayList<>();
