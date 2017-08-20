@@ -26,6 +26,7 @@ import java.util.List;
 public class MZModeBannerFragment extends Fragment{
     public static final String TAG = "MZModeBannerFragment";
     public static final int []RES = new int[]{R.mipmap.image5,R.mipmap.image2,R.mipmap.image3,R.mipmap.image4,R.mipmap.image6,R.mipmap.image7,R.mipmap.image8};
+    public static final int []BANNER = new int[]{R.mipmap.banner1,R.mipmap.banner2,R.mipmap.banner3,R.mipmap.banner4,R.mipmap.banner5};
     private MZBannerView mMZBanner;
     private MZBannerView mNormalBanner;
 
@@ -63,8 +64,13 @@ public class MZModeBannerFragment extends Fragment{
         for(int i=0;i<RES.length;i++){
             list.add(RES[i]);
         }
+
+        List<Integer> bannerList = new ArrayList<>();
+        for(int i=0;i<BANNER.length;i++){
+            bannerList.add(BANNER[i]);
+        }
         mMZBanner.setIndicatorVisible(false);
-        mMZBanner.setPages(list, new MZHolderCreator<BannerViewHolder>() {
+        mMZBanner.setPages(bannerList, new MZHolderCreator<BannerViewHolder>() {
             @Override
             public BannerViewHolder createViewHolder() {
                 return new BannerViewHolder();

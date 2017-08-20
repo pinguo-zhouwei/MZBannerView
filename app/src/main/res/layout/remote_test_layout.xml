@@ -4,11 +4,17 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="从网络获取数据后显示Banner:"
+            android:textColor="#AA47BC"
+            />
         <com.zhouwei.mzbanner.MZBannerView
             android:id="@+id/my_banner"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="40dp"
             app:canLoop="true"
             app:open_mz_mode="true"
             >
