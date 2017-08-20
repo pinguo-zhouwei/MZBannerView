@@ -28,7 +28,8 @@ import android.widget.Scroller;
 
 import com.zhouwei.mzbanner.holder.MZHolderCreator;
 import com.zhouwei.mzbanner.holder.MZViewHolder;
-import com.zhouwei.mzbanner.transformer.CustomTransformer;
+import com.zhouwei.mzbanner.transformer.CoverModeTransformer;
+import com.zhouwei.mzbanner.transformer.ScaleYTransformer;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ import java.util.List;
 
 public class MZBannerView<T> extends RelativeLayout {
     private static final String TAG = "MZBannerView";
-    private ViewPager mViewPager;
+    private CustomViewPager mViewPager;
     private MZPagerAdapter mAdapter;
     private List<T> mDatas;
     private boolean mIsAutoPlay = true;// 是否自动播放
@@ -65,6 +66,11 @@ public class MZBannerView<T> extends RelativeLayout {
         CENTER,//居中对齐
         RIGHT //右对齐
     }
+
+    /**
+     * 中间Page是否覆盖两边，默认覆盖
+     */
+    private boolean mIsMiddlePageCover = true;
     public MZBannerView(@NonNull Context context) {
         super(context);
         init();
@@ -92,6 +98,7 @@ public class MZBannerView<T> extends RelativeLayout {
     private void readAttrs(Context context,AttributeSet attrs){
         TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.MZBannerView);
         mIsOpenMZEffect = typedArray.getBoolean(R.styleable.MZBannerView_open_mz_mode,true);
+        mIsMiddlePageCover = typedArray.getBoolean(R.styleable.MZBannerView_middle_page_cover,true);
         mIsCanLoop = typedArray.getBoolean(R.styleable.MZBannerView_canLoop,true);
         mIndicatorAlign = typedArray.getInt(R.styleable.MZBannerView_indicatorAlign,1);
         mIndicatorPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.MZBannerView_indicatorPaddingLeft,0);
@@ -107,7 +114,7 @@ public class MZBannerView<T> extends RelativeLayout {
             view = LayoutInflater.from(getContext()).inflate(R.layout.mz_banner_normal_layout,this,true);
         }
       mIndicatorContainer = (LinearLayout) view.findViewById(R.id.banner_indicator_container);
-      mViewPager = (ViewPager) view.findViewById(R.id.mzbanner_vp);
+      mViewPager = (CustomViewPager) view.findViewById(R.id.mzbanner_vp);
       mViewPager.setOffscreenPageLimit(4);
 
       mMZModePadding = dpToPx(30);
@@ -131,7 +138,14 @@ public class MZBannerView<T> extends RelativeLayout {
     private void setOpenMZEffect(){
         // 魅族模式
         if(mIsOpenMZEffect){
-            mViewPager.setPageTransformer(false,new CustomTransformer());
+            if(mIsMiddlePageCover){
+                // 中间页面覆盖两边，和魅族APP 的banner 效果一样。
+                mViewPager.setPageTransformer(true,new CoverModeTransformer(mViewPager));
+            }else{
+                // 中间页面不覆盖，页面并排，只是Y轴缩小
+                mViewPager.setPageTransformer(false,new ScaleYTransformer());
+            }
+
         }
     }
 

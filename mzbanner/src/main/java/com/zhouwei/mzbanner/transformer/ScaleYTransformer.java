@@ -7,7 +7,7 @@ import android.view.View;
  * Created by zhouwei on 17/5/26.
  */
 
-public class CustomTransformer implements ViewPager.PageTransformer {
+public class ScaleYTransformer implements ViewPager.PageTransformer {
     private static final float MIN_SCALE = 0.9F;
     @Override
     public void transformPage(View page, float position) {

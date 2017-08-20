@@ -10,5 +10,6 @@
             <enum name="center" value="1"/>
             <enum name="right" value="2"/>
         </attr>
+        <attr name="middle_page_cover" format="boolean"/>
     </declare-styleable>
 </resources>
