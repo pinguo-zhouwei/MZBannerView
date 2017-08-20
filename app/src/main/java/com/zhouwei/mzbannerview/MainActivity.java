@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
                     switchViewPagerMode();
                 }else if(item.getItemId() == R.id.remote_mode){
                     switchRemoteMode();
+                }else if(item.getItemId() == R.id.mz_mode_not_cover){
+                    switchMZModeNotCover();
                 }
                 return true;
             }
@@ -52,8 +54,16 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.home_container,fragment).commit();
     }
 
+    /**
+     * 从网络获取数据
+     */
     public void switchRemoteMode(){
         Fragment fragment = RemoteTestFragment.newInstance();
+        getSupportFragmentManager().beginTransaction().replace(R.id.home_container,fragment).commit();
+    }
+
+    public void switchMZModeNotCover(){
+        Fragment fragment = MZModeNotCoverFragment.newInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.home_container,fragment).commit();
     }
 }

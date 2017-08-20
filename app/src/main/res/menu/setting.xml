@@ -9,4 +9,7 @@
     <item android:id="@+id/remote_mode"
           android:title="从网上获取数据模式"
         />
+    <item android:id="@+id/mz_mode_not_cover"
+          android:title="Banner模式，中间Page不覆盖"
+        />
 </menu>
