@@ -51,7 +51,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-         compile 'com.github.pinguo-zhouwei:MZBannerView:v1.1.2'
+         compile 'com.github.pinguo-zhouwei:MZBannerView:v2.0.0'
 }
 ```
 
