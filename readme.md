@@ -38,9 +38,11 @@ gif图片有点模糊，可以扫描下方二维码下载APK体验
 
 **v1.1.2 :** fix 更改数据之后，调用setPages重新刷新数据会crush的bug
 
-**v2.0.0 :**  add: 添加仿魅族Banner效果，中间Page覆盖两边。
-              fix 部分bug: 添加OnPageChangeListener 回调 pisition 不对的bug.
- 
+**v2.0.0 :**  
+              1,add: 添加仿魅族Banner效果，中间Page覆盖两边。
+
+              2,fix 部分bug: 添加OnPageChangeListener 回调 pisition 不对的bug.
+
 
 ### Dependency
 Add it in your root build.gradle at the end of repositories:
