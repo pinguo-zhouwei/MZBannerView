@@ -65,28 +65,7 @@ dependencies {
 | indicatorPaddingRight        | 设置指示器距离右侧的距离     |     单位为 dp 的值  |
 | indicatorAlign        | 设置指示器的位置      |   有三个取值：left 左边，center 剧中显示，right 右侧显示   |
 
-**通过`open_mz_mode `和`canLoop `这两个属性来控制MZBannerView 是用作Banner还是普通ViewPager,有4种组合方式**
 
-1，仿魅族BannerView(默认的模式)
- ```java
- app:open_mz_mode="true"
- app:canLoop="true"
-``` 
-2, 普通BannerView 
- ```java
- app:open_mz_mode="false"
- app:canLoop="true"
-``` 
-3 ,普通ViewPager (有魅族Banner的切换动画)
- ```java
- app:open_mz_mode="true"
- app:canLoop="false"
-``` 
-4, 普通ViewPager
- ```java
- app:open_mz_mode="false"
- app:canLoop="false"
-``` 
 ### 使用方法
 
 1 . xml 布局文件
@@ -145,6 +124,98 @@ dependencies {
         mMZBanner.start();//开始轮播
     }
 ```
+
+**通过`open_mz_mode `、`middle_page_cover`和`canLoop `这3个属性来控制MZBannerView 是用作Banner还是普通ViewPager,能控制多种Banner展示效果：**
+
+1 . 魅族Banner 效果，中间Page覆盖两边。
+
+```java
+ app:open_mz_mode="true"
+ app:canLoop="true"
+ app:middle_page_cover="true"
+```
+
+![Page 覆盖效果](http://upload-images.jianshu.io/upload_images/3513995-39f495bf8a915ad0.gif?imageMogr2/auto-orient/strip)
+
+2 普通banner 使用。
+
+```java
+app:open_mz_mode="false"
+app:canLoop="true"
+```
+![普通Banner效果](http://upload-images.jianshu.io/upload_images/3513995-39f495bf8a915ad0.gif?imageMogr2/auto-orient/strip)
+上图中的底部BannerView 示例。
+
+3 仿魅族Banner 效果，中间Page不覆盖。
+
+```java
+ app:open_mz_mode="true"
+ app:canLoop="true"
+ app:middle_page_cover="false"
+```
+
+![Page不覆盖效果](http://upload-images.jianshu.io/upload_images/3513995-9aa19c594f932982.gif?imageMogr2/auto-orient/strip)
+
+4 仿爱奇艺Banner效果，Page 之间有间隔。
+
+```java
+ <com.zhouwei.mzbanner.MZBannerView
+       android:id="@+id/banner_normal"
+       android:layout_width="match_parent"
+       android:layout_height="150dp"
+       android:layout_marginTop="10dp"
+       app:open_mz_mode="true"
+       app:middle_page_cover="false"
+       app:canLoop="true"
+       app:indicatorAlign="center"
+       />
+```
+除了上面的代码外，还需要在Page 的item 布局里面设置左右Margin:
+
+```java
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/banner_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        />
+
+```
+效果如下：
+![仿爱奇艺Banner效果](http://upload-images.jianshu.io/upload_images/3513995-f753f5449512c06c.gif?imageMogr2/auto-orient/strip)
+
+5 有魅族Banner 效果的普通ViewPager 使用
+
+
+```java
+ app:open_mz_mode="true"
+ app:canLoop="false"
+```
+![魅族Banner效果的普通ViewPager](http://upload-images.jianshu.io/upload_images/3513995-29d27def0753dd86.gif?imageMogr2/auto-orient/strip)
+
+6 普通ViewPager 使用
+
+```java
+ app:canLoop="false"
+ app:open_mz_mode="false"
+```
+
+ ![普通ViewPager](http://upload-images.jianshu.io/upload_images/3513995-6cb035771cda9870.gif?imageMogr2/auto-orient/strip)
+
+上面都是用Banner 展示的本地数据，但是项目中我们一般都是从网络获取Banner 数据，具体参考：`RemoteTestFragment.java`
+
+![从网络获取数据](http://upload-images.jianshu.io/upload_images/3513995-04706f4aed2a39f0.gif?imageMogr2/auto-orient/strip)
+
+
+
+
 ### 其他对外API
 ```java
     /******************************************************************************************************/

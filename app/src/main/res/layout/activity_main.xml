@@ -23,6 +23,7 @@
        android:layout_marginTop="10dp"
        app:open_mz_mode="true"
        app:canLoop="true"
+       app:middle_page_cover="true"
        app:indicatorAlign="center"
        app:indicatorPaddingLeft="10dp"
        />
