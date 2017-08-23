@@ -144,6 +144,7 @@ app:open_mz_mode="false"
 app:canLoop="true"
 ```
 ![普通Banner效果](http://upload-images.jianshu.io/upload_images/3513995-39f495bf8a915ad0.gif?imageMogr2/auto-orient/strip)
+
 上图中的底部BannerView 示例。
 
 3 仿魅族Banner 效果，中间Page不覆盖。
@@ -170,6 +171,7 @@ app:canLoop="true"
        app:indicatorAlign="center"
        />
 ```
+
 除了上面的代码外，还需要在Page 的item 布局里面设置左右Margin:
 
 ```java
@@ -189,6 +191,7 @@ app:canLoop="true"
 
 ```
 效果如下：
+
 ![仿爱奇艺Banner效果](http://upload-images.jianshu.io/upload_images/3513995-f753f5449512c06c.gif?imageMogr2/auto-orient/strip)
 
 5 有魅族Banner 效果的普通ViewPager 使用
@@ -198,6 +201,7 @@ app:canLoop="true"
  app:open_mz_mode="true"
  app:canLoop="false"
 ```
+
 ![魅族Banner效果的普通ViewPager](http://upload-images.jianshu.io/upload_images/3513995-29d27def0753dd86.gif?imageMogr2/auto-orient/strip)
 
 6 普通ViewPager 使用
