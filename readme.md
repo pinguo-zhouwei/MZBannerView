@@ -18,6 +18,8 @@
 
 4 . 当普通ViewPager使用(有魅族Banner效果)
 
+5 . 仿爱奇艺Banner效果。
+
 ### Demo APK 
 
 gif图片有点模糊，可以扫描下方二维码下载APK体验
@@ -35,6 +37,9 @@ gif图片有点模糊，可以扫描下方二维码下载APK体验
 **v1.1.0 :** fix 在从网上获取数据后，banner 显示 造成 ANR 的bug(如果在onCreate()中设置资源显示则没问题)
 
 **v1.1.2 :** fix 更改数据之后，调用setPages重新刷新数据会crush的bug
+
+**v2.0.0 :**  add: 添加仿魅族Banner效果，中间Page覆盖两边。
+              fix 部分bug: 添加OnPageChangeListener 回调 pisition 不对的bug.
  
 
 ### Dependency
@@ -64,6 +69,7 @@ dependencies {
 | indicatorPaddingLeft        | 设置指示器距离左侧的距离      |   单位为 dp 的值     |
 | indicatorPaddingRight        | 设置指示器距离右侧的距离     |     单位为 dp 的值  |
 | indicatorAlign        | 设置指示器的位置      |   有三个取值：left 左边，center 剧中显示，right 右侧显示   |
+| middle_page_cover        | 设置中间Page是否覆盖（真正的魅族Banner效果）     |   true 覆盖，false 无覆盖效果 |
 
 
 ### 使用方法
@@ -258,13 +264,11 @@ app:canLoop="true"
 
 ![魅族bannerView](image/魅族Banner_fial.gif) 
 
-2 ，普通ViewPager效果图:
-
-![MZBanner普通ViewPager效果.gif](image/MZBanner普通ViewPager效果.gif)
 
 ### Thanks
  感谢[Android-ConvenientBanner](https://github.com/saiwu-bigkoo/Android-ConvenientBanner),Android-ConvenientBanner 是一个不错的Banner库，我也参考了其中的部分代码
  有兴趣的可以去看一下这个库。
+ 感谢[ScaleViewPager](https://github.com/liuyuejinqiu/ScaleViewPager) 提供中间Page覆盖效果的思路。
  
 ### 联系方式
  简书:[http://www.jianshu.com/u/35167a70aa39](http://www.jianshu.com/u/35167a70aa39)
