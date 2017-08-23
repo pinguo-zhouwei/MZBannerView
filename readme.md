@@ -3,7 +3,7 @@
 现在的APP Banner大多数千篇一律，前几天看到魅族手机上所有魅族自家APP上的Banner效果不错，于是就想着来仿着做一个类似的效果。因此就有了这个库。但是为了使用方便，这个库不仅仅只有仿魅族效果的BannerView 来使用，还可以当作普通的BannerView 来使用，还可以当作一个ViewPager 来使用。使用很方便，具体使用方法和API 请看后面的示例。
 
 
-![meizuappbanner](image/meizuappbanner.gif) －－－ ![魅族bannerView](image/MZBannerView.gif)
+![meizuappbanner](image/meizuappbanner.gif) －－－ ![魅族bannerView](image/魅族Banner_fial.gif)
 左图为魅族APP上的Banner效果，右图是高仿效果。
 
 
@@ -215,7 +215,7 @@ app:canLoop="true"
 
 上面都是用Banner 展示的本地数据，但是项目中我们一般都是从网络获取Banner 数据，具体参考：`RemoteTestFragment.java`
 
-![从网络获取数据](http://upload-images.jianshu.io/upload_images/3513995-04706f4aed2a39f0.gif?imageMogr2/auto-orient/strip)
+![从网络获取数据](image/network_data.gif)
 
 
 
@@ -256,7 +256,7 @@ app:canLoop="true"
 
 1, BannerView 轮播效果图：
 
-![魅族bannerView](image/魅族bannerView.gif) 
+![魅族bannerView](image/魅族Banner_fial.gif) 
 
 2 ，普通ViewPager效果图:
 
