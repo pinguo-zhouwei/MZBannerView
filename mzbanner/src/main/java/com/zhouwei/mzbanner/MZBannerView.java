@@ -55,8 +55,10 @@ public class MZBannerView<T> extends RelativeLayout {
     private ArrayList<ImageView> mIndicators = new ArrayList<>();
     //mIndicatorRes[0] 为为选中，mIndicatorRes[1]为选中
     private int []mIndicatorRes= new int[]{R.drawable.indicator_normal,R.drawable.indicator_selected};
-    private int mIndicatorPaddingLeft = 0;
-    private int mIndicatorPaddingRight = 0;
+    private int mIndicatorPaddingLeft = 0;// indicator 距离左边的距离
+    private int mIndicatorPaddingRight = 0;//indicator 距离右边的距离
+    private int mIndicatorPaddingTop = 0;//indicator 距离上边的距离
+    private int mIndicatorPaddingBottom = 0;//indicator 距离下边的距离
     private int mMZModePadding = 0;//在仿魅族模式下，由于前后显示了上下一个页面的部分，因此需要计算这部分padding
     private int mIndicatorAlign = 1;
     private ViewPager.OnPageChangeListener mOnPageChangeListener;
@@ -103,6 +105,8 @@ public class MZBannerView<T> extends RelativeLayout {
         mIndicatorAlign = typedArray.getInt(R.styleable.MZBannerView_indicatorAlign,1);
         mIndicatorPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.MZBannerView_indicatorPaddingLeft,0);
         mIndicatorPaddingRight = typedArray.getDimensionPixelSize(R.styleable.MZBannerView_indicatorPaddingRight,0);
+        mIndicatorPaddingTop = typedArray.getDimensionPixelSize(R.styleable.MZBannerView_indicatorPaddingTop,0);
+        mIndicatorPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.MZBannerView_indicatorPaddingBottom,0);
     }
 
 
@@ -440,6 +444,10 @@ public class MZBannerView<T> extends RelativeLayout {
         }else{
             layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
         }
+
+        // 2017.8.27 添加：增加设置Indicator 的上下边距。
+
+        layoutParams.setMargins(0,mIndicatorPaddingTop,0,mIndicatorPaddingBottom);
         mIndicatorContainer.setLayoutParams(layoutParams);
 
     }

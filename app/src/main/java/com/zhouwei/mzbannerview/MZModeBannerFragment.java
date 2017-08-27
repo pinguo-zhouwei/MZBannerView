@@ -69,7 +69,7 @@ public class MZModeBannerFragment extends Fragment{
         for(int i=0;i<BANNER.length;i++){
             bannerList.add(BANNER[i]);
         }
-        mMZBanner.setIndicatorVisible(false);
+        mMZBanner.setIndicatorVisible(true);
         mMZBanner.setPages(bannerList, new MZHolderCreator<BannerViewHolder>() {
             @Override
             public BannerViewHolder createViewHolder() {
@@ -78,7 +78,6 @@ public class MZModeBannerFragment extends Fragment{
         });
 
         mNormalBanner = (MZBannerView) view.findViewById(R.id.banner_normal);
-        mNormalBanner.setIndicatorRes(R.color.colorAccent,R.color.colorPrimary);
         mNormalBanner.setPages(list, new MZHolderCreator<BannerViewHolder>() {
             @Override
             public BannerViewHolder createViewHolder() {

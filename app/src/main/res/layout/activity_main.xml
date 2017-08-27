@@ -26,6 +26,7 @@
        app:middle_page_cover="true"
        app:indicatorAlign="center"
        app:indicatorPaddingLeft="10dp"
+       app:indicatorPaddingBottom="50dp"
        />
 
    <TextView
