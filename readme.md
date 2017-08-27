@@ -40,8 +40,7 @@ gif图片有点模糊，可以扫描下方二维码下载APK体验
 
 **v2.0.0 :**  
               1,add: 添加仿魅族Banner效果，中间Page覆盖两边。
-
-              2,fix 部分bug: 添加OnPageChangeListener 回调 pisition 不对的bug.
+              -- 2,fix 部分bug: 添加OnPageChangeListener 回调 pisition 不对的bug.
 
 
 ### Dependency
