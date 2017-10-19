@@ -3,6 +3,8 @@ package com.zhouwei.mzbanner.transformer;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.zhouwei.mzbanner.CustomViewPager;
+
 /**
  * Created by zhouwei on 17/8/20.
  */
@@ -16,8 +18,14 @@ public class CoverModeTransformer implements ViewPager.PageTransformer {
     private float mScaleMax = 1.0f;
     private float mScaleMin = 0.9f;
     private ViewPager mViewPager;
-    public CoverModeTransformer(ViewPager pager){
+
+    public CoverModeTransformer(ViewPager pager) {
         mViewPager = pager;
+    }
+
+    public CoverModeTransformer(CustomViewPager pager, float mSideScale) {
+        mViewPager = pager;
+        this.mScaleMin = mSideScale;
     }
 
     @Override
