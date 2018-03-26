@@ -39,8 +39,30 @@ gif图片有点模糊，可以扫描下方二维码下载APK体验
 **v1.1.2 :** fix 更改数据之后，调用setPages重新刷新数据会crush的bug
 
 **v2.0.0 :**  
-              1,add: 添加仿魅族Banner效果，中间Page覆盖两边。
-              -- 2,fix 部分bug: 添加OnPageChangeListener 回调 pisition 不对的bug.
+              
+1,add: 添加仿魅族Banner效果，中间Page覆盖两边。
+              
+2,fix 部分bug: 添加OnPageChangeListener 回调 pisition 不对的bug.
+
+**v2.0.1**
+
+1 , 部分代码优化
+2，添加设置Indicator的api,代码中和xml中都可以设置：
+代码中：
+```java
+ mMZBanner.setIndicatorAlign(MZBannerView.IndicatorAlign.LEFT);
+ mMZBanner.setIndicatorPadding(10,0,0,150);
+
+```
+xml中：
+```java
+ app:indicatorAlign="center"
+ app:indicatorPaddingLeft="10dp"
+ app:indicatorPaddingBottom="50dp"
+ app:indicatorPaddingRight="10dp"
+ app:indicatorPaddingTop="50dp"
+```
+
 
 
 ### Dependency
@@ -57,7 +79,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-         compile 'com.github.pinguo-zhouwei:MZBannerView:v2.0.0'
+         compile 'com.github.pinguo-zhouwei:MZBannerView:v2.0.1'
 }
 ```
 

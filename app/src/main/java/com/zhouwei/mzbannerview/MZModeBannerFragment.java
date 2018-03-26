@@ -71,6 +71,7 @@ public class MZModeBannerFragment extends Fragment{
         }
         mMZBanner.setIndicatorVisible(true);
         // 代码中更改indicator 的位置
+        //mMZBanner.setIndicatorAlign(MZBannerView.IndicatorAlign.LEFT);
         //mMZBanner.setIndicatorPadding(10,0,0,150);
         mMZBanner.setPages(bannerList, new MZHolderCreator<BannerViewHolder>() {
             @Override
