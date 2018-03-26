@@ -63,6 +63,7 @@ xml中：
  app:indicatorPaddingTop="50dp"
 ```
 
+>重要： 代码中所有的配置项都应该在`setPages()` 之前调用，不然有可能会无效
 
 
 ### Dependency
