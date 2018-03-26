@@ -102,11 +102,12 @@ public class MZBannerView<T> extends RelativeLayout {
         mIsOpenMZEffect = typedArray.getBoolean(R.styleable.MZBannerView_open_mz_mode,true);
         mIsMiddlePageCover = typedArray.getBoolean(R.styleable.MZBannerView_middle_page_cover,true);
         mIsCanLoop = typedArray.getBoolean(R.styleable.MZBannerView_canLoop,true);
-        mIndicatorAlign = typedArray.getInt(R.styleable.MZBannerView_indicatorAlign,1);
+        mIndicatorAlign = typedArray.getInt(R.styleable.MZBannerView_indicatorAlign,IndicatorAlign.CENTER.ordinal());
         mIndicatorPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.MZBannerView_indicatorPaddingLeft,0);
         mIndicatorPaddingRight = typedArray.getDimensionPixelSize(R.styleable.MZBannerView_indicatorPaddingRight,0);
         mIndicatorPaddingTop = typedArray.getDimensionPixelSize(R.styleable.MZBannerView_indicatorPaddingTop,0);
         mIndicatorPaddingBottom = typedArray.getDimensionPixelSize(R.styleable.MZBannerView_indicatorPaddingBottom,0);
+        typedArray.recycle();
     }
 
 
@@ -125,14 +126,7 @@ public class MZBannerView<T> extends RelativeLayout {
         // 初始化Scroller
       initViewPagerScroll();
 
-      if(mIndicatorAlign == 0){
-          setIndicatorAlign(IndicatorAlign.LEFT);
-      }else if(mIndicatorAlign == 1){
-          setIndicatorAlign(IndicatorAlign.CENTER);
-      }else{
-          setIndicatorAlign(IndicatorAlign.RIGHT);
-      }
-
+      sureIndicatorPosition();
 
     }
 
@@ -150,6 +144,19 @@ public class MZBannerView<T> extends RelativeLayout {
                 mViewPager.setPageTransformer(false,new ScaleYTransformer());
             }
 
+        }
+    }
+
+    /**
+     * make sure the indicator
+     */
+    private void sureIndicatorPosition(){
+        if(mIndicatorAlign == IndicatorAlign.LEFT.ordinal()){
+            setIndicatorAlign(IndicatorAlign.LEFT);
+        }else if(mIndicatorAlign == IndicatorAlign.CENTER.ordinal()){
+            setIndicatorAlign(IndicatorAlign.CENTER);
+        }else{
+            setIndicatorAlign(IndicatorAlign.RIGHT);
         }
     }
 
@@ -327,6 +334,21 @@ public class MZBannerView<T> extends RelativeLayout {
     }
 
     /**
+     * set indicator padding
+     * @param paddingLeft
+     * @param paddingTop
+     * @param paddingRight
+     * @param paddingBottom
+     */
+    public void setIndicatorPadding(int paddingLeft,int paddingTop,int paddingRight,int paddingBottom){
+        mIndicatorPaddingLeft = paddingLeft;
+        mIndicatorPaddingTop = paddingTop;
+        mIndicatorPaddingRight = paddingRight;
+        mIndicatorPaddingBottom = paddingBottom;
+        sureIndicatorPosition();
+    }
+
+    /**
      * 返回ViewPager
      * @return {@link ViewPager}
      */
@@ -450,6 +472,11 @@ public class MZBannerView<T> extends RelativeLayout {
         layoutParams.setMargins(0,mIndicatorPaddingTop,0,mIndicatorPaddingBottom);
         mIndicatorContainer.setLayoutParams(layoutParams);
 
+    }
+
+
+    public LinearLayout getIndicatorContainer() {
+        return mIndicatorContainer;
     }
 
     /**
