@@ -7,3 +7,7 @@
 /build
 /captures
 .externalNativeBuild
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/dictionaries
+.idea/misc.xml
