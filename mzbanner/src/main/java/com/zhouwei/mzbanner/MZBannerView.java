@@ -504,6 +504,19 @@ public class MZBannerView<T> extends RelativeLayout {
     }
 
 
+    /**
+     * 设置banner两边的间距
+     *
+     * @param l
+     * @param t
+     * @param r
+     * @param b
+     */
+    public void setBannerItemMargin(int l, int t, int r, int b) {
+        ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) mViewPager.getLayoutParams();
+        p.setMargins(dpToPx(l), dpToPx(t), dpToPx(r), dpToPx(b));
+        mViewPager.requestLayout();
+    }
 
 
 

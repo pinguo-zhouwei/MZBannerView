@@ -77,6 +77,8 @@ public class MZModeNotCoverFragment extends Fragment{
             }
         });
 
+        mMZBanner.setBannerItemMargin(10,0,10,0);
+
         mNormalBanner = (MZBannerView) view.findViewById(R.id.banner_normal);
         mNormalBanner.setIndicatorRes(R.color.colorAccent,R.color.colorPrimary);
         mNormalBanner.setPages(list, new MZHolderCreator<BannerPaddingViewHolder>() {
