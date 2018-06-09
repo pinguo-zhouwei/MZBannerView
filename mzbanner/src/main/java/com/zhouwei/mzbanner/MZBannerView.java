@@ -258,11 +258,11 @@ public class MZBannerView<T> extends RelativeLayout {
                 float touchX = ev.getRawX();
                 // 如果是魅族模式，去除两边的区域
                 if(touchX >= paddingLeft && touchX < getScreenWidth(getContext()) - paddingLeft){
-                    mIsAutoPlay = false;
+                    pause();
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                mIsAutoPlay = true;
+                start();
                 break;
         }
         return super.dispatchTouchEvent(ev);
