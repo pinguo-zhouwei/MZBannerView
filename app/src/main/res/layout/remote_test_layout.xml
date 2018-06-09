@@ -33,4 +33,17 @@
             android:textColor="@android:color/white"
             android:background="#AA47BC"
             />
+
+         <TextView
+            android:id="@+id/btn_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="清空Banner数据"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:background="#AA47BC"
+            />
 </LinearLayout>

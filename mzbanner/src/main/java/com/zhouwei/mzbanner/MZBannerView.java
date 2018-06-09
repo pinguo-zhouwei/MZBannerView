@@ -546,6 +546,9 @@ public class MZBannerView<T> extends RelativeLayout {
         }
 
         private int getStartSelectItem(){
+            if(getRealCount() == 0){
+                return 0;
+            }
             // 我们设置当前选中的位置为Integer.MAX_VALUE / 2,这样开始就能往左滑动
             // 但是要保证这个值与getRealPosition 的 余数为0，因为要从第一页开始显示
             int currentItem = getRealCount() * mLooperCountFactor / 2;

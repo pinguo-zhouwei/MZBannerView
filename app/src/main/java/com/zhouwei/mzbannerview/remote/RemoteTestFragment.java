@@ -46,6 +46,7 @@ public class RemoteTestFragment extends Fragment implements View.OnClickListener
         mMZBannerView = (MZBannerView) view.findViewById(R.id.my_banner);
         mBtnChange = (TextView) view.findViewById(R.id.btn_change);
         mBtnChange.setOnClickListener(this);
+        view.findViewById(R.id.btn_clear).setOnClickListener(this);
         mMovieLoader = new MovieLoader();
         getMovieList();
         return view;
@@ -108,6 +109,8 @@ public class RemoteTestFragment extends Fragment implements View.OnClickListener
             movies.add(mMovies.get(0));
             movies.add(mMovies.get(1));
             setBanner(movies);
+        }else if(v.getId() == R.id.btn_clear){
+            setBanner(new ArrayList<Movie>());
         }
     }
 
