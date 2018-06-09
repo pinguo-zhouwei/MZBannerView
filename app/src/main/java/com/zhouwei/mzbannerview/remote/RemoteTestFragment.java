@@ -125,9 +125,19 @@ public class RemoteTestFragment extends Fragment implements View.OnClickListener
             List movies = new ArrayList(mMovies);
             movies.add(mMovies.get(0));
             movies.add(mMovies.get(1));
+            if(movies.size()>2){
+                mMZBannerView.setCanLoop(true);
+            }else{
+                mMZBannerView.setCanLoop(false);
+            }
             setBanner(movies);
         }else if(v.getId() == R.id.btn_clear){
-            setBanner(new ArrayList<Movie>());
+            List<Movie> movies = new ArrayList<>();
+            movies.add(mMovies.get(0));
+            movies.add(mMovies.get(1));
+            mMZBannerView.setCanLoop(false);
+            setBanner(movies);
+
         }
     }
 

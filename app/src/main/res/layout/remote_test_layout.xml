@@ -40,7 +40,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
-            android:text="清空Banner数据"
+            android:text="减少数目更新"
             android:padding="10dp"
             android:gravity="center"
             android:textColor="@android:color/white"

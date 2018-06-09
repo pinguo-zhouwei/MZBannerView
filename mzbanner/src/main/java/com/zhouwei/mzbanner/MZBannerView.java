@@ -288,6 +288,7 @@ public class MZBannerView<T> extends RelativeLayout {
             return;
         }
         if(mIsCanLoop){
+            pause();
             mIsAutoPlay = true;
             mHandler.postDelayed(mLoopRunnable,mDelayedTime);
         }
@@ -299,6 +300,17 @@ public class MZBannerView<T> extends RelativeLayout {
     public void pause(){
         mIsAutoPlay = false;
         mHandler.removeCallbacks(mLoopRunnable);
+    }
+
+    /**
+     * 设置是否可以轮播
+     * @param canLoop
+     */
+    public void setCanLoop(boolean canLoop){
+        mIsCanLoop = canLoop;
+        if(!canLoop){
+            pause();
+        }
     }
 
     /**
@@ -426,7 +438,7 @@ public class MZBannerView<T> extends RelativeLayout {
                         mIndicators.get(i).setImageResource(mIndicatorRes[0]);
                     }
                 }
-                  // 不能直接将mOnPageChangeListener 设置给ViewPager ,否则拿到的position 是原始的positon
+                  // 不能直接将mOnPageChangeListener 设置给ViewPager ,否则拿到的position 是原始的position
                  if(mOnPageChangeListener!=null){
                      mOnPageChangeListener.onPageSelected(realSelectPosition);
                   }
