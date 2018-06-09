@@ -309,7 +309,7 @@ public class MZBannerView<T> extends RelativeLayout {
         mDelayedTime = delayedTime;
     }
 
-    public void addPageChangeLisnter(ViewPager.OnPageChangeListener onPageChangeListener){
+    public void addPageChangeListener(ViewPager.OnPageChangeListener onPageChangeListener){
         mOnPageChangeListener = onPageChangeListener;
     }
 
@@ -401,7 +401,7 @@ public class MZBannerView<T> extends RelativeLayout {
         mAdapter.setPageClickListener(mBannerPageClickListener);
 
 
-
+        mViewPager.clearOnPageChangeListeners();
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

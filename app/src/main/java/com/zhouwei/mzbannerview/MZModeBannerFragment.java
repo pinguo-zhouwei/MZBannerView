@@ -44,7 +44,7 @@ public class MZModeBannerFragment extends Fragment{
                 Toast.makeText(getContext(),"click page:"+position,Toast.LENGTH_LONG).show();
             }
         });
-        mMZBanner.addPageChangeLisnter(new ViewPager.OnPageChangeListener() {
+        mMZBanner.addPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Log.e(TAG,"----->addPageChangeLisnter:"+position + "positionOffset:"+positionOffset+ "positionOffsetPixels:"+positionOffsetPixels);
