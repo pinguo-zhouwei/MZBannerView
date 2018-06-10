@@ -4,7 +4,9 @@
 [![](https://img.shields.io/badge/MZBannerView-v2.0.2-brightgreen.svg)](https://github.com/pinguo-zhouwei/MZBannerView)
 [![](https://img.shields.io/badge/API-16%2B-brightgreen.svg)](https://github.com/pinguo-zhouwei/MZBannerView)
 [![](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/pinguo-zhouwei/MZBannerView)
+[![](https://img.shields.io/badge/License-Apache--2.0-brightgreen.svg)]()
 [![](https://img.shields.io/badge/%E7%AE%80%E4%B9%A6-%E4%BE%9D%E7%84%B6%E8%8C%83%E7%89%B9%E7%A8%80%E8%A5%BF-red.svg)](https://www.jianshu.com/u/35167a70aa39)
+[![](https://img.shields.io/badge/%E5%85%AC%E4%BC%97%E5%8F%B7-Android%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B4%A7%E9%93%BA-blue.svg)](https://mp.weixin.qq.com/mp/homepage?__biz=MzIxMTg5NjQyMA==&hid=1&sn=6914e8d560a0d524f937af629488b6b5&scene=1&devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.11.5+build(15F34)&version=12020810&lang=zh_CN&nettype=WIFI&ascene=0&session_us=gh_d32aef65c1b3&fontScale=100&pass_ticket=Wty8DxZurpU2xxUkFPtXL5oqMrigpoVVh1agsDKXukmezsMUUJaWb%2FdIlcrhpQOq&wx_header=1&uin=OTU2MjA1MzIy&key=ebe51358ecae289391e767e9274e1a2bf8576a9e4fd5bc2b31956a627346413f84f752a9dd302e2a157b6fb84991a4142881a8143d21cdd25b805b8ba327e3ba78443337a68c9a1b32095d9adc30ec4b)
 
 现在的APP Banner大多数千篇一律，前几天看到魅族手机上所有魅族自家APP上的Banner效果不错，于是就想着来仿着做一个类似的效果。因此就有了这个库。但是为了使用方便，这个库不仅仅只有仿魅族效果的BannerView 来使用，还可以当作普通的BannerView 来使用，还可以当作一个ViewPager 来使用。使用很方便，具体使用方法和API 请看后面的示例。
 
@@ -68,6 +70,11 @@ xml中：
  app:indicatorPaddingRight="10dp"
  app:indicatorPaddingTop="50dp"
 ```
+**v2.0.2**
+
+1,修复部分bug
+2,代码优化，增加在代码中可以设置是否自动轮播
+
 
 >重要： 代码中所有的配置项都应该在`setPages()` 之前调用，不然有可能会无效
 
@@ -86,7 +93,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-         compile 'com.github.pinguo-zhouwei:MZBannerView:v2.0.1'
+         compile 'com.github.pinguo-zhouwei:MZBannerView:v2.0.2'
 }
 ```
 
