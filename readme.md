@@ -1,5 +1,11 @@
 ### MZBannerView
 
+[![](https://img.shields.io/badge/release-v2.0.2-blue.svg)](https://github.com/pinguo-zhouwei/MZBannerView/releases)
+[![](https://img.shields.io/badge/MZBannerView-v2.0.2-brightgreen.svg)](https://github.com/pinguo-zhouwei/MZBannerView)
+[![](https://img.shields.io/badge/API-16%2B-brightgreen.svg)](https://github.com/pinguo-zhouwei/MZBannerView)
+[![](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/pinguo-zhouwei/MZBannerView)
+[![](https://img.shields.io/badge/%E7%AE%80%E4%B9%A6-%E4%BE%9D%E7%84%B6%E8%8C%83%E7%89%B9%E7%A8%80%E8%A5%BF-red.svg)](https://www.jianshu.com/u/35167a70aa39)
+
 现在的APP Banner大多数千篇一律，前几天看到魅族手机上所有魅族自家APP上的Banner效果不错，于是就想着来仿着做一个类似的效果。因此就有了这个库。但是为了使用方便，这个库不仅仅只有仿魅族效果的BannerView 来使用，还可以当作普通的BannerView 来使用，还可以当作一个ViewPager 来使用。使用很方便，具体使用方法和API 请看后面的示例。
 
 
